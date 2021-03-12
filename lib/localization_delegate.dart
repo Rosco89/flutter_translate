@@ -28,12 +28,13 @@ class LocalizationDelegate extends LocalizationsDelegate<Localization>
         var isInitializing = currentLocale == null;
 
         var locale = LocaleService.findLocale(newLocale, supportedLocales) ?? fallbackLocale;
-
+        
         if(_currentLocale == locale) return;
-
-        var localizedContent = await LocaleService.getLocaleContent(locale, supportedLocalesMap);
-
-        Localization.load(localizedContent);
+        
+        if(isInitializing) {
+            var localizedContent = await LocaleService.getLocaleContent(locale, supportedLocalesMap);
+            Localization.load(localizedContent);
+        }
 
         _currentLocale = locale;
 
