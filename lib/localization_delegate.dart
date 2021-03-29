@@ -8,6 +8,8 @@ import 'flutter_translate.dart';
 class LocalizationDelegate extends LocalizationsDelegate<Localization>
 {
     Locale _currentLocale;
+    
+    Locale _currentLocale2;
 
     final Locale fallbackLocale;
 
